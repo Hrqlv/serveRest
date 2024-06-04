@@ -1,0 +1,27 @@
+{
+  "name": "serverestprj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "tests": "npx playwright test --project=chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hrqlv/serveRestPrj.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hrqlv/serveRestPrj/issues"
+  },
+  "homepage": "https://github.com/Hrqlv/serveRestPrj#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.14.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
