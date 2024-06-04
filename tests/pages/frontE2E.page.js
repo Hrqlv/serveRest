@@ -16,4 +16,20 @@ export class TestsE2EPage {
     await this.page.locator('button[data-testid="entrar"]').click()
     }
 
+    async validarMensagensDeErroLogin() {
+        await this.page.locator('button[data-testid="logout"]').click()
+        await this.page.locator('button[data-testid="entrar"]').click()
+        await expect(this.page.locator('div[class="alert alert-secondary alert-dismissible"]').filter({hasText: 'Email é obrigatório' })).toBeVisible()
+        await expect(this.page.locator('div[class="alert alert-secondary alert-dismissible"]').filter({hasText: 'Password é obrigatório' })).toBeVisible()
+    }
+
+    async validarProdutosTelaInicial() {
+      await expect(this.page.locator('div[class*="card"]').filter({hasText: 'Unbranded Rubber Bacon' }).nth(0)).toBeVisible()
+    }
+
+    async adicionarNaListaValidarProdutoCarrinho() {
+        await this.page.locator('button[data-testid="adicionarNaLista"]').nth(0).click()
+        await expect(this.page.locator('h1').filter({hasText: 'Lista de Compras' })).toBeVisible()
+        await expect(this.page.locator('div[data-testid="shopping-cart-product-name"]')).toBeVisible()
+    }
 }
