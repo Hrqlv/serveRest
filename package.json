@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tests": "npx playwright test --project=chrome",
-    "api": "npx playwright test --grep @API --project=chrome"
+    "e2eTests": "npx playwright test --grep @E2E --project=chrome",
+    "apiTests": "npx playwright test --grep @API --project=chrome",
+    "tests": "npx playwright test --grep @E2E && npx playwright test --grep @API --project=chrome"
   },
   "repository": {
     "type": "git",

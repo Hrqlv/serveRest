@@ -3,7 +3,7 @@ import { TestsE2EPage } from '../../pages/frontE2E.page';
 
 let testsE2EPage
 
-test.describe('Realizae tests E2E', async () => {
+test.describe('E2E Tests @E2E', async () => {
   test.beforeEach(async({ page }) => {
     testsE2EPage = new TestsE2EPage(page);
    await page.goto('https://front.serverest.dev/') 
