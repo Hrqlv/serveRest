@@ -23,13 +23,12 @@ export class TestsE2EPage {
         await expect(this.page.locator('div[class="alert alert-secondary alert-dismissible"]').filter({hasText: 'Password é obrigatório' })).toBeVisible()
     }
 
-    async validarProdutosTelaInicial() {
-      await expect(this.page.locator('div[class*="card"]').filter({hasText: 'Unbranded Rubber Bacon' }).nth(0)).toBeVisible()
+    async botaoListarUsuario() {
+      await expect(this.page.locator('p[class="lead"]')).toBeVisible()
     }
 
-    async adicionarNaListaValidarProdutoCarrinho() {
-        await this.page.locator('button[data-testid="adicionarNaLista"]').nth(0).click()
-        await expect(this.page.locator('h1').filter({hasText: 'Lista de Compras' })).toBeVisible()
-        await expect(this.page.locator('div[data-testid="shopping-cart-product-name"]')).toBeVisible()
+    async validarListaUsuarios() {
+        await this.page.locator('a[data-testid="listarUsuarios"]').click()
+        await expect(this.page.locator('h1').filter({hasText: 'Lista dos usuários' })).toBeVisible()
     }
 }
