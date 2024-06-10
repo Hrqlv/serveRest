@@ -20,12 +20,10 @@ export class ServicesAPI {
         expect(response.status(), `Request (/login) failed\nStatus: ${(response.status())} ${response.statusText()}`).toBe(200);
         const responseBody = await response.json();
         this.authToken = responseBody.authorization;
-        console.log(`Auth Token: ${this.authToken}`); 
         return response;
     }
 
     async getUsuarios() {
-        console.log(`Token for getUsuarios: ${this.authToken}`); 
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': this.authToken
@@ -36,7 +34,6 @@ export class ServicesAPI {
     }
 
     async postUsuarios(nome, email, senha, adm) {
-        console.log(`Token for postUsuarios: ${this.authToken}`); 
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': this.authToken,
@@ -55,19 +52,18 @@ export class ServicesAPI {
         return response;
     }
 
-    async getUsuariosID(userId) {
-        console.log(`Token for getUsuariosID: ${this.authToken}`); 
+    async getUsuariosID(userID) {
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': this.authToken
             }
         });
-        const response = await context.get(`${this.urlBase}/usuarios/${userId}`);
+        const response = await context.get(`${this.urlBase}/usuarios/${userID}`);
+        expect(response.status(), `Request (/usuarios/${userID}) failed\nStatus: ${(response.status())} ${response.statusText()}`).toBe(200);
         return response;
     }
 
     async deleteUsuarioID(userID) {
-        console.log(`Token for deleteUsuarioID: ${this.authToken}`); 
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': this.authToken
@@ -79,7 +75,6 @@ export class ServicesAPI {
     }
 
     async putUsuarios(userID, nome, email, senha, adm) {
-        console.log(`Token for putUsuarios: ${this.authToken}`); 
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': this.authToken,
@@ -99,7 +94,6 @@ export class ServicesAPI {
     }
 
     async getProdutos() {
-        console.log(`Token for getProdutos: ${this.authToken}`); 
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': this.authToken
@@ -110,7 +104,6 @@ export class ServicesAPI {
     }
 
     async postProdutos(nome, preco, descricao, quantidade) {
-        console.log(`Token for postProdutos: ${this.authToken}`);
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': this.authToken,
@@ -132,7 +125,6 @@ export class ServicesAPI {
     }
 
     async getProdutosID(produtoID) {
-        console.log(`Token for getProdutosID: ${this.authToken}`); 
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': this.authToken
@@ -155,7 +147,6 @@ export class ServicesAPI {
     }
 
     async putProdutosID(produtoID, nome, preco, descricao, quantidade) {
-        console.log(`Token for putProdutosID: ${this.authToken}`); 
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': this.authToken,
@@ -173,5 +164,60 @@ export class ServicesAPI {
         expect(response.status(), `Request (/produtos/${produtoID}) failed\nStatus: ${(response.status())} ${response.statusText()}`).toBe(201);
         return response;
     }
-    
+
+    async getCarrinho() {
+        const context = await request.newContext({
+            extraHTTPHeaders: {
+                'Authorization': this.authToken
+            }
+        });
+        const response = await context.get(`${this.urlBase}/carrinhos`);
+        return response;
+    }
+
+    async postCarrinho(produtoID, quantidade) {
+        const context = await request.newContext({
+            extraHTTPHeaders: {
+                'Authorization': this.authToken,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const response = await context.post(`${this.urlBase}/carrinhos`, {
+            data: {
+                produtos: [
+                    {
+                        idProduto: produtoID,
+                        quantidade: quantidade
+                    }
+                ]
+            }
+        });
+
+        const responseBody = await response.json();
+        console.log(`postCarrinho response status: ${response.status()}, body: ${JSON.stringify(responseBody)}`);
+        expect(response.status(), `Request (/carrinhos) failed\nStatus: ${(response.status())} ${response.statusText()}`).toBe(201);
+        return response;
+    }
+
+    async getCarrinhoID(carrinhoID) {
+        const context = await request.newContext({
+            extraHTTPHeaders: {
+                'Authorization': this.authToken
+            }
+        });
+        const response = await context.get(`${this.urlBase}/carrinhos/${carrinhoID}`);
+        return response;
+    }
+
+    async deleteCarrinho(carrinhoID) {
+        const context = await request.newContext({
+            extraHTTPHeaders: {
+                'Authorization': this.authToken
+            }
+        });
+        const response = await context.delete(`${this.urlBase}/carrinhos/${carrinhoID}`);
+        expect(response.status(), `Request (/carrinhos/${carrinhoID}) failed\nStatus: ${(response.status())} ${response.statusText()}`).toBe(200);
+        return response;
+    }
 }
