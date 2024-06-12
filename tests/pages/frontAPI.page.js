@@ -6,12 +6,12 @@ export class ServicesAPI {
         this.urlBase = 'https://serverest.dev';
     }
 
-    async postLogin(user, password) {
+    async postLogin() {
         const context = await request.newContext();
         const response = await context.post(`${this.urlBase}/login`, {
             data: {
-                email: user,
-                password: password
+                email: 'fulano@qa.com',
+                password: 'teste'
             },
             headers: {
                 'Content-Type': 'application/json'
