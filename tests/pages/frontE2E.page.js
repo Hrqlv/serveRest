@@ -6,6 +6,10 @@ export class TestsE2EPage {
         this.page = page;
     }
 
+    async irPara() {
+        await this.page.goto('https://front.serverest.dev/') 
+    }
+
     async validarTituloLogin() {
     await expect(this.page.locator('h1[class="font-robot"]')).toBeVisible()
     }

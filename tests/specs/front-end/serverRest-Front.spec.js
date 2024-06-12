@@ -6,8 +6,9 @@ let testsE2EPage
 test.describe('E2E Tests @E2E', async () => {
   test.beforeEach(async({ page }) => {
     testsE2EPage = new TestsE2EPage(page);
-   await page.goto('https://front.serverest.dev/') 
+    await testsE2EPage.irPara()
   })
+  
   test('Realizar login e validar mensagem de campos inválidos', async ({ page }) => {
     await test.step('Validar titulo login', async () => {
       await testsE2EPage.validarTituloLogin()
