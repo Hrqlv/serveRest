@@ -4,9 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "e2eTests": "npx playwright test --grep @E2E --project=chrome",
-    "apiTests": "npx playwright test --grep @API --project=chrome",
-    "tests": "npx playwright test --grep @E2E && npx playwright test --grep @API --project=chrome"
+    "tests": "npx playwright test --grep @E2E && npx playwright test --grep @API --project=chrome",
+    "headed": "npx playwright test --headed",
+    "debug": "npx playwright test --debug",
+    "chrome": "npx playwright test --project=chrome",
+    "firefox": "npx playwright test --project=firefox",
+    "safari": "npx playwright test --project=safari",
+    "e2e": "npx playwright test --project=chrome --grep \"@E2E\"",
+    "api": "npx playwright test --project=chrome --grep \"@API\""
   },
   "repository": {
     "type": "git",

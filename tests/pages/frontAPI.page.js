@@ -194,8 +194,6 @@ export class ServicesAPI {
             }
         });
 
-        const responseBody = await response.json();
-        console.log(`postCarrinho response status: ${response.status()}, body: ${JSON.stringify(responseBody)}`);
         expect(response.status(), `Request (/carrinhos) failed\nStatus: ${(response.status())} ${response.statusText()}`).toBe(201);
         return response;
     }
@@ -210,14 +208,30 @@ export class ServicesAPI {
         return response;
     }
 
-    async deleteCarrinho(carrinhoID) {
+    async concluirCompra(carrinhoID) {
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': this.authToken
             }
         });
-        const response = await context.delete(`${this.urlBase}/carrinhos/${carrinhoID}`);
-        expect(response.status(), `Request (/carrinhos/${carrinhoID}) failed\nStatus: ${(response.status())} ${response.statusText()}`).toBe(200);
+        const response = await context.delete(`${this.urlBase}/carrinhos/concluir-compra`, {
+            data: { id: carrinhoID }
+        });
+        expect(response.status(), `Request (/carrinhos/concluir-compra) failed\nStatus: ${(response.status())} ${response.statusText()}`).toBe(200);
         return response;
     }
+    
+    async cancelarCompra(carrinhoID) {
+        const context = await request.newContext({
+            extraHTTPHeaders: {
+                'Authorization': this.authToken
+            }
+        });
+        const response = await context.delete(`${this.urlBase}/carrinhos/cancelar-compra`, {
+            data: { id: carrinhoID }
+        });
+        expect(response.status(), `Request (/carrinhos/cancelar-compra) failed\nStatus: ${(response.status())} ${response.statusText()}`).toBe(200);
+        return response;
+    }
+    
 }
