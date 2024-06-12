@@ -23,8 +23,8 @@ test.describe('E2E Tests @E2E', async () => {
     })
   });
 
-  test('Realizar a validaçao de produtos que contem na pagina inicial e no carrinho que o usuario desejar', async ({ page }) => {
-    await test.step('Validar quantos produtos tem', async () => {
+  test('Realizar a validaçao de usuarios que contem nos produtos', async ({ page }) => {
+    await test.step('Validar a lista dos usuarios', async () => {
       await testsE2EPage.realizarLogin()
       await testsE2EPage.botaoListarUsuario()
       await testsE2EPage.validarListaUsuarios()
