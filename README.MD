@@ -34,11 +34,11 @@ npm run chrome
 
 ### Running API Tests
 ```
-npm run apiTests
+npm run api
 ```
 ### Running E2E Tests
 ```
-npm run e2eTests
+npm run e2e
 ```
 
 ### Running a test by Tag
