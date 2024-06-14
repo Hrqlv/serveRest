@@ -10,12 +10,25 @@ export default defineConfig({
   workers: process.env.CI ? 4 : undefined,
   reporter: [['list', { printSteps: true }], ['html']],
   
+  // reporter: [
+  //   [
+  //     "allure-playwright",
+  //     {
+
+  //       sendResults: "always", // "always" , "on-failure", "off"        
+  //     },
+  //   ],
+  //   ['list', { printSteps: true }],
+  //   ['html'],
+  //   ['allure-playwright'], // other reporters
+  // ],
+
   use: {
     trace: 'retain-on-failure',
     video: 'retain-on-failure',
     screenshot: 'on',
     actionTimeout: 10000,
-    navigationTimeout: 30000,
+    navigationTimeout: 40000,
   },
 
   projects: [

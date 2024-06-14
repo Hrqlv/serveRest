@@ -6,13 +6,13 @@ export class ServicesAPI {
         this.urlBase = 'https://serverest.dev';
     }
 
-    async postLogin() {
+    async postLogin(email, password) {
         const context = await request.newContext();
         const response = await context.post(`${this.urlBase}/login`, {
             data: {
-                email: 'fulano@qa.com',
-                password: 'teste'
-            },
+                email: email,
+                password: password
+              },
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -34,9 +34,10 @@ export class ServicesAPI {
     }
 
     async postUsuarios(nome, email, senha, adm) {
+        const authTokenHeader = `Bearer ${this.authToken}`; // Formatar o token de autenticação conforme necessário
         const context = await request.newContext({
             extraHTTPHeaders: {
-                'Authorization': this.authToken,
+                'Authorization': authTokenHeader,
                 'Content-Type': 'application/json'
             }
         });
