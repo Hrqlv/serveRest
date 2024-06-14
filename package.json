@@ -5,15 +5,13 @@
   "main": "index.js",
   "scripts": {
     "tests": "npx playwright test --grep @E2E && npx playwright test --grep @API --project=chrome",
-    "headed": "npx playwright test --headed",
-    "debug": "npx playwright test --debug",
-    "chrome": "npx playwright test --project=chrome",
-    "firefox": "npx playwright test --project=firefox",
-    "safari": "npx playwright test --project=safari",
-    "e2e": "npx playwright test --project=chrome --grep \"@E2E\"",
-    "api": "npx playwright test --project=chrome --grep \"@API\"",
-    "allure": "cp -r allure-report/history allure-results/ && allure generate allure-results --clean && allure open ./allure-report",
-    "allure_clean": "rm -rf allure-results/*"
+    "headed": "npx playwright test --grep @E2E --headed --project=chrome",
+    "debug": "npx playwright test --grep @E2E --debug --project=chrome",
+    "chrome": "npx playwright test --grep @E2E --project=chrome",
+    "firefox": "npx playwright test --grep @E2E --project=firefox",
+    "safari": "npx playwright test --grep @E2E --project=safari",
+    "e2e": "npx playwright test --grep @E2E --project=chrome",
+    "api": "npx playwright test --grep @API --project=chrome"  
   },
   "repository": {
     "type": "git",

@@ -9,19 +9,6 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 4 : undefined,
   reporter: [['list', { printSteps: true }], ['html']],
-  
-  // reporter: [
-  //   [
-  //     "allure-playwright",
-  //     {
-
-  //       sendResults: "always", // "always" , "on-failure", "off"        
-  //     },
-  //   ],
-  //   ['list', { printSteps: true }],
-  //   ['html'],
-  //   ['allure-playwright'], // other reporters
-  // ],
 
   use: {
     trace: 'retain-on-failure',
