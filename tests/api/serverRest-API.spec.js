@@ -46,6 +46,7 @@ test.describe('API Tests @API', () => {
         expect(postProdutos.status()).toBe(201);
     });
 
+        // Fluxo de usuario
     test('Realizar fluxo de usuario com API', async ({ page }) => {
         await test.step('Obter os dados do usuario - GET', async () => {
             const usuariosResponse = await servicesApi.getUsuarios();
@@ -81,6 +82,7 @@ test.describe('API Tests @API', () => {
         });
     });
 
+        // Fluxo de produto
     test('Realizar fluxo de produto com API', async ({ page }) => {
         await test.step('Pegar os produtos - GET', async () => {
             const produtosResponse = await servicesApi.getProdutos();
@@ -116,6 +118,7 @@ test.describe('API Tests @API', () => {
         });
     });
 
+        // Fluxo de carrinho
     test('Realizar fluxo de carrinho com API', async ({ page }) => {
         await test.step('Concluir compra - DELETE', async () => {
             const concluirCompraResponse = await servicesApi.concluirCompra(carrinhoID)

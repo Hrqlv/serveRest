@@ -6,6 +6,7 @@ export class ServicesAPI {
         this.urlBase = 'https://serverest.dev';
     }
 
+        // API de Login
     async postLogin(email, password) {
         const context = await request.newContext();
         const response = await context.post(`${this.urlBase}/login`, {
@@ -23,6 +24,7 @@ export class ServicesAPI {
         return response;
     }
 
+        // API's de Usuario
     async getUsuarios() {
         const context = await request.newContext({
             extraHTTPHeaders: {
@@ -34,7 +36,7 @@ export class ServicesAPI {
     }
 
     async postUsuarios(nome, email, senha, adm) {
-        const authTokenHeader = `Bearer ${this.authToken}`; // Formatar o token de autenticação conforme necessário
+        const authTokenHeader = `Bearer ${this.authToken}`; 
         const context = await request.newContext({
             extraHTTPHeaders: {
                 'Authorization': authTokenHeader,
@@ -94,6 +96,7 @@ export class ServicesAPI {
         return response;
     }
 
+        // API's de Produto
     async getProdutos() {
         const context = await request.newContext({
             extraHTTPHeaders: {
@@ -166,6 +169,7 @@ export class ServicesAPI {
         return response;
     }
 
+        // API's de Carrinho
     async getCarrinho() {
         const context = await request.newContext({
             extraHTTPHeaders: {
