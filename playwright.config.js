@@ -1,13 +1,16 @@
 import { defineConfig, devices } from '@playwright/test';
 
+const envCI = process.env.CI?.toLocaleLowerCase() == 'true' ? true : false;
+
 export default defineConfig({
   
   timeout: 100000,
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 4 : undefined,
+  retries: envCI ? 3 : 0,
+  workers: envCI ? 3 : 0,
+ 
   reporter: [['list', { printSteps: true }], ['html']],
 
   use: {
