@@ -5,7 +5,7 @@ import { createUser } from "../../../helpers/helpers";
 let testsE2EPage
 let user
 
-test.describe('E2E Tests @E2E', async () => {
+test.describe('E2E Tests @E2E @CI', async () => {
   test.beforeEach(async({ page }) => {
     testsE2EPage = new TestsE2EPage(page);
     user = createUser();

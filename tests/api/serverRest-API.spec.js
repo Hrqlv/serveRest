@@ -16,7 +16,7 @@ const preco = faker.datatype.number({ min: 1, max: 1000 });
 const descricao = faker.lorem.words(3);
 const quantidade = faker.datatype.number({ min: 1, max: 100 });
 
-test.describe('API Tests @API', () => {
+test.describe('API Tests @API @CI', () => {
     test.beforeEach(async ({ page }) => {
         servicesApi = new ServicesAPI();
         user = createUser();

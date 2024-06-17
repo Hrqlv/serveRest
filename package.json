@@ -10,8 +10,9 @@
     "chrome": "npx playwright test --grep @E2E --project=chrome",
     "firefox": "npx playwright test --grep @E2E --project=firefox",
     "safari": "npx playwright test --grep @E2E --project=safari",
-    "e2e": "npx playwright test --grep @E2E --project=chrome",
-    "api": "npx playwright test --grep @API --project=chrome"  
+    "e2e": "npx playwright test --grep @E2E @CI --project=chrome",
+    "api": "npx playwright test --grep @API @CI --project=chrome",
+    "ci": "npx playwright test --project=chrome --grep \"@CI\""
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "allure-playwright": "^3.0.0-beta.3"
   },
   "dependencies": {
+    "@estruyf/github-actions-reporter": "^1.7.0",
     "@faker-js/faker": "^8.4.1",
     "ajv": "^8.16.0",
     "dotenv": "^16.4.5",
