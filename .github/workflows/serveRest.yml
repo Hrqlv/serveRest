@@ -5,7 +5,7 @@ on:
 
 jobs:
   test:
-    timeout-minutes: 
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
     steps:
