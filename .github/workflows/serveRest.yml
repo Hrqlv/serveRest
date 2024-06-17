@@ -7,16 +7,31 @@ jobs:
   test:
     timeout-minutes: 5
     runs-on: ubuntu-latest
+
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
       with:
         node-version: 18
+
+    - name: Set environment variables
+      run: |
+        echo "PLAYWRIGHT_TEST_BASE_URL=https://serverest.dev" >> $GITHUB_ENV
+        echo "PLAYWRIGHT_FRONT_URL=https://front.serverest.dev" >> $GITHUB_ENV
+
     - name: Install dependencies
       run: npm ci
+
     - name: Install Playwright
       run: npx playwright install --with-deps
+
+    - name: Debugging Environment
+      run: |
+        echo "Base API URL is ${{ env.PLAYWRIGHT_TEST_BASE_URL }}"
+        echo "Base Frontend URL is ${{ env.PLAYWRIGHT_FRONT_URL }}"
+
     - name: Run Playwright tests
       run: npx playwright test
       env:
-        PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
+        PLAYWRIGHT_TEST_BASE_URL: ${{ env.PLAYWRIGHT_TEST_BASE_URL }}
+        PLAYWRIGHT_FRONT_URL: ${{ env.PLAYWRIGHT_FRONT_URL }}
