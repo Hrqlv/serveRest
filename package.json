@@ -10,8 +10,8 @@
     "chrome": "npx playwright test --grep @E2E --project=chrome",
     "firefox": "npx playwright test --grep @E2E --project=firefox",
     "safari": "npx playwright test --grep @E2E --project=safari",
-    "e2e": "npx playwright test --grep @E2E @CI --project=chrome",
-    "api": "npx playwright test --grep @API @CI --project=chrome",
+    "e2e": "npx playwright test --grep \"@E2E @CI\" --project=chrome",
+    "api": "npx playwright test --grep \"@API @CI\" --project=chrome",
     "ci": "npx playwright test --project=chrome --grep \"@CI\""
   },
   "repository": {
