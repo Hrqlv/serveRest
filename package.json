@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tests": "npx playwright test --grep @E2E && npx playwright test --grep @API --project=chrome",
+    "currents": "npx pwc --key ys1GPh8v3PhMJydx --project-id ugnPrx --ci-build-id hello-currents",
     "headed": "npx playwright test --grep @E2E --headed --project=chrome",
     "debug": "npx playwright test --grep @E2E --debug --project=chrome",
     "chrome": "npx playwright test --grep @E2E --project=chrome",
