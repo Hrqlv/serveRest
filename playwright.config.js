@@ -1,21 +1,32 @@
-import { defineConfig, devices } from '@playwright/test';
+const { defineConfig, devices } = require('@playwright/test');
+const { currentsReporter } = require('@currents/playwright');
+
+// Configuração do Currents
+const currentsConfig = {
+  ciBuildId: "hello-currents", // 📖 https://currents.dev/readme/guides/ci-build-id
+  recordKey: "ys*****dx", // 📖 https://currents.dev/readme/guides/record-key
+  projectId: "ugnPrx", // get one at https://app.currents.dev
+};
 
 const envCI = process.env.CI?.toLocaleLowerCase() == 'true' ? true : false;
 
-export default defineConfig({
-  
+module.exports = defineConfig({
   timeout: 100000,
   testDir: './tests',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: envCI ? 3 : 0,
   workers: envCI ? 3 : 3,
- 
-  reporter: [['list', { printSteps: true }], ['html']],
+
+  reporter: [
+    ['list', { printSteps: true }],
+    ['html'],
+    currentsReporter(currentsConfig) // 👈🏻 Adicionar Currents Reporter
+  ],
 
   use: {
-    trace: 'retain-on-failure',
-    video: 'retain-on-failure',
+    trace: 'on',
+    video: 'on',
     screenshot: 'on',
     actionTimeout: 10000,
     navigationTimeout: 40000,
