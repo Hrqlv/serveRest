@@ -3,9 +3,9 @@ const { currentsReporter } = require('@currents/playwright');
 
 // Configuração do Currents usando variáveis de ambiente
 const currentsConfig = {
-  ciBuildId: process.env.CI_BUILD_ID || "local-build",
-  recordKey: process.env.RECORD_KEY,
-  projectId: process.env.PROJECT_ID,
+  ciBuildId: "hello-currents", // 📖 https://currents.dev/readme/guides/ci-build-id
+  recordKey: "ys*****dx", // 📖 https://currents.dev/readme/guides/record-key
+  projectId: "ugnPrx", // get one at https://app.currents.dev
 };
 
 const envCI = process.env.CI?.toLocaleLowerCase() == 'true' ? true : false;
