@@ -3,9 +3,9 @@ const { currentsReporter } = require('@currents/playwright');
 
 // Configuração do Currents usando variáveis de ambiente
 const currentsConfig = {
-  ciBuildId: process.env.CI_BUILD_ID,
+  ciBuildId: process.env.CI_BUILD_ID, // Use a variável de ambiente correta
   recordKey: process.env.RECORD_KEY,
-  projectId: process.env.PROJECT_ID,
+  projectId: process.env.PROJECT_ID || "ugnPrx",
 };
 
 const envCI = process.env.CI?.toLocaleLowerCase() == 'true' ? true : false;
