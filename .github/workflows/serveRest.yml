@@ -22,19 +22,19 @@ jobs:
         echo "RECORD_KEY=${{ secrets.RECORD_KEY }}" >> $GITHUB_ENV
         echo "PROJECT_ID=${{ secrets.PROJECT_ID }}" >> $GITHUB_ENV
 
+    - name: Debugging Environment
+      run: |
+        echo "Base API URL is ${{ env.PLAYWRIGHT_TEST_BASE_URL }}"
+        echo "Base Frontend URL is ${{ env.PLAYWRIGHT_FRONT_URL }}"
+        echo "CI Build ID is ${{ env.CI_BUILD_ID }}"
+        echo "Record Key is ${{ env.RECORD_KEY }}"
+        echo "Project ID is ${{ env.PROJECT_ID }}"
+
     - name: Install dependencies
       run: npm ci
 
     - name: Install Playwright
       run: npx playwright install --with-deps
-
-    - name: Debugging Environment
-      run: |
-        echo "Base API URL is ${{ env.PLAYWRIGHT_TEST_BASE_URL }}"
-        echo "Base Frontend URL is ${{ env.PLAYWRIGHT_FRONT_URL }}"
-        echo "Record Key is ${{ secrets.RECORD_KEY }}"
-        echo "Project ID is ${{ secrets.PROJECT_ID }}"
-        echo "CI Build ID is ${{ github.run_id }}"
 
     - name: Run Playwright tests
       run: npx playwright test
