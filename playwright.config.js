@@ -22,7 +22,6 @@ module.exports = defineConfig({
     ['list', { printSteps: true }],
     ['html'],
     currentsReporter(currentsConfig),
-    ['dot']
   ],
 
   use: {
