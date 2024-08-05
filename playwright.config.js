@@ -8,11 +8,7 @@ const currentsConfig = {
   projectId: process.env.PROJECT_ID,
 };
 
-console.log('CI Build ID:', process.env.CI_BUILD_ID);
-console.log('Record Key:', process.env.RECORD_KEY);
-console.log('Project ID:', process.env.PROJECT_ID);
-
-const envCI = process.env.CI?.toLocaleLowerCase() == 'true';
+const envCI = process.env.CI?.toLocaleLowerCase() === 'true';
 
 module.exports = defineConfig({
   timeout: 100000,
@@ -25,7 +21,8 @@ module.exports = defineConfig({
   reporter: [
     ['list', { printSteps: true }],
     ['html'],
-    currentsReporter(currentsConfig)
+    currentsReporter(currentsConfig),
+    ['dot']
   ],
 
   use: {

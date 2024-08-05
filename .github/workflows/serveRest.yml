@@ -44,3 +44,6 @@ jobs:
         CI_BUILD_ID: ${{ env.CI_BUILD_ID }}
         RECORD_KEY: ${{ secrets.RECORD_KEY }}
         PROJECT_ID: ${{ secrets.PROJECT_ID }}
+
+    - name: Upload results to Currents
+      run: npx pwc --key ${{ secrets.RECORD_KEY }} --project-id ${{ secrets.PROJECT_ID }} --ci-build-id ${{ github.run_id }}
