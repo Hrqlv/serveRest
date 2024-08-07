@@ -1,12 +1,4 @@
 const { defineConfig, devices } = require('@playwright/test');
-const { currentsReporter } = require('@currents/playwright');
-
-// Configuração do Currents usando variáveis de ambiente
-const currentsConfig = {
-  ciBuildId: process.env.CI_BUILD_ID,
-  recordKey: process.env.RECORD_KEY,
-  projectId: process.env.PROJECT_ID,
-};
 
 const envCI = process.env.CI?.toLocaleLowerCase() === 'true';
 
@@ -21,7 +13,6 @@ module.exports = defineConfig({
   reporter: [
     ['list', { printSteps: true }],
     ['html'],
-    currentsReporter(currentsConfig),
   ],
 
   use: {
